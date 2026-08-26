@@ -36,9 +36,25 @@ Stroke is one of the leading causes of death and long-term disability worldwide,
 
 **Best model: Logistic Regression** — highest ROC-AUC and the strongest recall/precision balance. In a medical screening context, recall is prioritized over raw accuracy, since a missed stroke case (false negative) is far costlier than a false alarm.
 
-> **Note on precision:** precision is low across all four models (~8–10%). This isn't a bug — it's the direct, expected consequence of predicting a rare event (~5% positive rate) with general-purpose classifiers, and is called out here deliberately rather than hidden. It's also why accuracy alone is a misleading metric for this problem: a model that always predicts "no stroke" would score ~95% accuracy while being clinically useless.
 
 ## Key Insights
 
 - **Age** and **average glucose level** were the two strongest predictors across every model and every hypothesis test, consistent with established clinical risk factors.
 - Class imbalance is the central challenge in this dataset — model selection was driven by ROC-AUC and
+
+
+## How to Run
+
+```bash
+git clone <this-repo-url>
+cd stroke-risk-prediction
+pip install pandas numpy scikit-learn imbalanced-learn scipy seaborn matplotlib jupyter
+jupyter notebook Stroke_Prediction_ML_Project.ipynb
+```
+
+## Future Work
+
+- Ensemble methods (Random Forest, XGBoost, Gradient Boosting) to improve recall further
+- Model explainability with SHAP values
+- A larger, more balanced dataset to reduce reliance on synthetic oversampling
+
